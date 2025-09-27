@@ -55,7 +55,7 @@ export function DashboardSidebar() {
       {/* Mobile menu button - removed as we use X button to close */}
 
       {/* Desktop sidebar */}
-      <div className="fixed inset-y-0 left-0 z-40 w-64 bg-card border-r border lg:block hidden">
+      <div className="fixed inset-y-0 left-0 z-40 w-72 bg-card border-r border shadow-sm lg:block hidden">
         <div className="flex h-16 items-center px-6 border-b border">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
@@ -65,8 +65,8 @@ export function DashboardSidebar() {
           </div>
         </div>
 
-        <nav className="mt-6 px-3">
-          <ul className="space-y-1">
+        <nav className="mt-4 px-3">
+          <ul className="space-y-2">
             {navigation.map((item) => {
               const isActive = pathname.startsWith(item.href) && (item.href === '/dashboard' ? pathname === '/dashboard' : true)
               return (
@@ -74,13 +74,13 @@ export function DashboardSidebar() {
                   <Link
                     href={item.href}
                     className={cn(
-                      "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                      "flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-colors",
                       isActive
                         ? "bg-primary text-primary-foreground"
                         : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
                     )}
                   >
-                    <item.icon className="h-4 w-4" />
+                    <item.icon className="h-5 w-5" />
                     {item.name}
                   </Link>
                 </li>
@@ -92,9 +92,9 @@ export function DashboardSidebar() {
 
       {/* Mobile sidebar */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
+        <div className="fixed inset-0 z-50 lg:hidden">
           <div className="fixed inset-0 bg-black/50" onClick={() => setMobileMenuOpen(false)} />
-          <div className="fixed inset-y-0 left-0 w-64 bg-card overflow-y-auto">
+          <div className="fixed inset-y-0 left-0 w-72 bg-card overflow-y-auto shadow-xl transition-transform duration-300 ease-in-out">
             <div className="flex h-16 items-center justify-between px-6 border-b border">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
@@ -103,17 +103,17 @@ export function DashboardSidebar() {
                 <span className="text-xl font-bold text-foreground">AquaFlow</span>
               </div>
               <Button 
-                variant="outline" 
+                variant="ghost" 
                 size="icon" 
                 onClick={() => setMobileMenuOpen(false)}
-                className="bg-white border border-gray-200 shadow-sm"
+                className="hover:bg-muted"
               >
-                <X className="h-5 w-5 text-gray-700" />
+                <X className="h-5 w-5" />
               </Button>
             </div>
 
-            <nav className="mt-6 px-3">
-              <ul className="space-y-1">
+            <nav className="mt-4 px-3">
+              <ul className="space-y-2">
                 {navigation.map((item) => {
                   const isActive = pathname.startsWith(item.href) && (item.href === '/dashboard' ? pathname === '/dashboard' : true)
                   return (
@@ -122,13 +122,13 @@ export function DashboardSidebar() {
                         href={item.href}
                         onClick={() => setMobileMenuOpen(false)}
                         className={cn(
-                          "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                          "flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-colors",
                           isActive
                             ? "bg-primary text-primary-foreground"
                             : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
                         )}
                       >
-                        <item.icon className="h-4 w-4" />
+                        <item.icon className="h-5 w-5" />
                         {item.name}
                       </Link>
                     </li>

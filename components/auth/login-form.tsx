@@ -23,10 +23,13 @@ export function LoginForm() {
     e.preventDefault()
     setIsLoading(true)
     setError("")
+    
+    console.log("Login attempt with:", credentials.username)
 
     try {
       // Simulate authentication process
       await new Promise((resolve) => setTimeout(resolve, 1000))
+      console.log("Authentication simulation completed")
 
       // Check for specific driver credentials
       if (credentials.username === "driver" && credentials.password === "driver123") {
@@ -62,7 +65,7 @@ export function LoginForm() {
       // Check for demo customer credentials
       if (credentials.username === "customer" && credentials.password === "customer123") {
         localStorage.setItem(
-          "currentUser",
+          "user",
           JSON.stringify({
             id: "demo-customer-1",
             username: "customer",
@@ -86,7 +89,7 @@ export function LoginForm() {
 
       if (customer) {
         localStorage.setItem(
-          "currentUser",
+          "user",
           JSON.stringify({
             id: customer.id,
             username: customer.username,
@@ -104,6 +107,7 @@ export function LoginForm() {
 
       // For demo purposes, accept other credentials as admin
       if (credentials.username && credentials.password) {
+        console.log("Login successful, redirecting user")
         // Determine user role based on username pattern
         let userRole = "admin"
         let redirectPath = "/dashboard"

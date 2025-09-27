@@ -53,7 +53,7 @@ export default function CustomerDashboard() {
   useEffect(() => {
     try {
       // Check if user is logged in
-      const currentUser = localStorage.getItem('currentUser')
+      const currentUser = localStorage.getItem('user')
       if (!currentUser) {
         router.push('/')
         return
@@ -95,7 +95,7 @@ export default function CustomerDashboard() {
   }, [router])
 
   const handleLogout = () => {
-    localStorage.removeItem('currentUser')
+    localStorage.removeItem('user')
     router.push('/')
   }
 
