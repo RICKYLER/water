@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { Bell, Settings, LogOut, User } from "lucide-react"
+import { Bell, Settings, LogOut, User, Menu } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { NotificationBell } from "@/components/notifications/notification-bell"
 
@@ -35,10 +35,23 @@ export function DashboardHeader() {
     <header className="h-16 border-b border bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/50">
       <div className="flex h-16 items-center justify-between px-6">
         <div className="flex items-center gap-4">
-          <h1 className="text-lg font-semibold text-foreground">Water Refilling Station Management</h1>
+          {/* Mobile menu button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => window.dispatchEvent(new CustomEvent('toggle-sidebar'))}
+            className="lg:hidden"
+          >
+            <Menu className="h-5 w-5" />
+          </Button>
+          
+          {/* Mobile-friendly title with responsive text size */}
+          <h1 className="text-sm sm:text-base md:text-lg font-semibold text-foreground truncate max-w-[180px] sm:max-w-none">
+            AquaFlow
+          </h1>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <NotificationBell recipientType="admin" />
 
           <DropdownMenu>

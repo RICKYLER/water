@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { OrderDialog } from "@/components/orders/order-dialog"
 import { OrderDetailsDialog } from "@/components/orders/order-details-dialog"
+import { ResponsiveTable } from "@/components/ui/responsive-table"
 import { Search, Plus, Eye, Edit, Package, Clock, CheckCircle, XCircle, Truck } from "lucide-react"
 import { getAllOrders, updateOrder, type Order } from "@/lib/storage"
 
@@ -191,81 +192,149 @@ export default function OrdersPage() {
           </div>
 
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-4">
-              <TabsTrigger value="all">All Orders</TabsTrigger>
-              <TabsTrigger value="pending">Pending</TabsTrigger>
-              <TabsTrigger value="processing">Processing</TabsTrigger>
-              <TabsTrigger value="delivered">Delivered</TabsTrigger>
+            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 gap-1">
+              <TabsTrigger value="all" className="text-xs md:text-sm">All Orders</TabsTrigger>
+              <TabsTrigger value="pending" className="text-xs md:text-sm">Pending</TabsTrigger>
+              <TabsTrigger value="processing" className="text-xs md:text-sm">Processing</TabsTrigger>
+              <TabsTrigger value="delivered" className="text-xs md:text-sm">Delivered</TabsTrigger>
             </TabsList>
 
             <TabsContent value={activeTab} className="mt-4">
               <div className="rounded-md border">
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Order ID</TableHead>
-                      <TableHead>Customer</TableHead>
-                      <TableHead>Items</TableHead>
-                      <TableHead>Type</TableHead>
-                      <TableHead>Total</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead>Payment</TableHead>
-                      <TableHead>Date</TableHead>
-                      <TableHead className="text-right">Actions</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {filteredOrders.map((order) => (
-                      <TableRow key={order.id}>
-                        <TableCell className="font-medium">{order.id}</TableCell>
-                        <TableCell>
+                {/* Desktop Table (hidden on mobile) */}
+                <div className="hidden md:block">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Order ID</TableHead>
+                        <TableHead>Customer</TableHead>
+                        <TableHead>Items</TableHead>
+                        <TableHead>Type</TableHead>
+                        <TableHead>Total</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead>Payment</TableHead>
+                        <TableHead>Date</TableHead>
+                        <TableHead className="text-right">Actions</TableHead>
+                      </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                      {filteredOrders.map((order) => (
+                        <TableRow key={order.id}>
+                          <TableCell className="font-medium">{order.id}</TableCell>
+                          <TableCell>
+                            <div>
+                              <div className="font-medium">{order.customerName}</div>
+                              <div className="text-sm text-muted-foreground">{order.customerPhone}</div>
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            <div className="text-sm">
+                              {order.items.length} item{order.items.length > 1 ? "s" : ""}
+                            </div>
+                          </TableCell>
+                          <TableCell>
+                            <Badge variant="outline" className="gap-1">
+                              {order.orderType === "Delivery" ? (
+                                <Truck className="h-3 w-3" />
+                              ) : (
+                                <Package className="h-3 w-3" />
+                              )}
+                              {order.orderType}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>₱{order.total.toFixed(2)}</TableCell>
+                          <TableCell>
+                            <Badge variant={getStatusVariant(order.status)} className="gap-1">
+                              {getStatusIcon(order.status)}
+                              {order.status}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            <Badge variant={order.paymentStatus === "Paid" ? "default" : "secondary"}>
+                              {order.paymentStatus}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>{new Date(order.orderDate).toLocaleDateString()}</TableCell>
+                          <TableCell className="text-right">
+                            <div className="flex items-center justify-end gap-2">
+                              <Button variant="ghost" size="icon" onClick={() => handleViewOrder(order)}>
+                                <Eye className="h-4 w-4" />
+                              </Button>
+                              <Button variant="ghost" size="icon" onClick={() => handleEditOrder(order)}>
+                                <Edit className="h-4 w-4" />
+                              </Button>
+                            </div>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
+                
+                {/* Mobile Card View */}
+                <div className="md:hidden p-2">
+                  {filteredOrders.map((order) => (
+                    <Card key={order.id} className="mb-3">
+                      <CardContent className="p-4">
+                        <div className="flex justify-between items-start mb-3">
                           <div>
                             <div className="font-medium">{order.customerName}</div>
                             <div className="text-sm text-muted-foreground">{order.customerPhone}</div>
                           </div>
-                        </TableCell>
-                        <TableCell>
-                          <div className="text-sm">
-                            {order.items.length} item{order.items.length > 1 ? "s" : ""}
-                          </div>
-                        </TableCell>
-                        <TableCell>
-                          <Badge variant="outline" className="gap-1">
-                            {order.orderType === "Delivery" ? (
-                              <Truck className="h-3 w-3" />
-                            ) : (
-                              <Package className="h-3 w-3" />
-                            )}
-                            {order.orderType}
-                          </Badge>
-                        </TableCell>
-                        <TableCell>₱{order.total.toFixed(2)}</TableCell>
-                        <TableCell>
                           <Badge variant={getStatusVariant(order.status)} className="gap-1">
                             {getStatusIcon(order.status)}
                             {order.status}
                           </Badge>
-                        </TableCell>
-                        <TableCell>
-                          <Badge variant={order.paymentStatus === "Paid" ? "default" : "secondary"}>
-                            {order.paymentStatus}
-                          </Badge>
-                        </TableCell>
-                        <TableCell>{new Date(order.orderDate).toLocaleDateString()}</TableCell>
-                        <TableCell className="text-right">
-                          <div className="flex items-center justify-end gap-2">
-                            <Button variant="ghost" size="icon" onClick={() => handleViewOrder(order)}>
-                              <Eye className="h-4 w-4" />
-                            </Button>
-                            <Button variant="ghost" size="icon" onClick={() => handleEditOrder(order)}>
-                              <Edit className="h-4 w-4" />
-                            </Button>
+                        </div>
+                        
+                        <div className="grid grid-cols-2 gap-2 text-sm mb-3">
+                          <div>
+                            <div className="text-muted-foreground">Order ID</div>
+                            <div>{order.id}</div>
                           </div>
-                        </TableCell>
-                      </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
+                          <div>
+                            <div className="text-muted-foreground">Date</div>
+                            <div>{new Date(order.orderDate).toLocaleDateString()}</div>
+                          </div>
+                          <div>
+                            <div className="text-muted-foreground">Type</div>
+                            <Badge variant="outline" className="gap-1">
+                              {order.orderType === "Delivery" ? (
+                                <Truck className="h-3 w-3" />
+                              ) : (
+                                <Package className="h-3 w-3" />
+                              )}
+                              {order.orderType}
+                            </Badge>
+                          </div>
+                          <div>
+                            <div className="text-muted-foreground">Payment</div>
+                            <Badge variant={order.paymentStatus === "Paid" ? "default" : "secondary"}>
+                              {order.paymentStatus}
+                            </Badge>
+                          </div>
+                          <div>
+                            <div className="text-muted-foreground">Items</div>
+                            <div>{order.items.length} item{order.items.length > 1 ? "s" : ""}</div>
+                          </div>
+                          <div>
+                            <div className="text-muted-foreground">Total</div>
+                            <div className="font-medium">₱{order.total.toFixed(2)}</div>
+                          </div>
+                        </div>
+                        
+                        <div className="flex justify-end gap-2">
+                          <Button variant="outline" size="sm" onClick={() => handleViewOrder(order)}>
+                            <Eye className="h-4 w-4 mr-1" /> View
+                          </Button>
+                          <Button variant="outline" size="sm" onClick={() => handleEditOrder(order)}>
+                            <Edit className="h-4 w-4 mr-1" /> Edit
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
               </div>
             </TabsContent>
           </Tabs>
