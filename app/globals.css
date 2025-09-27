@@ -88,10 +88,7 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 
-  /* Apply dark theme by default to html element */
-  html {
-    @apply dark;
-  }
+  /* Remove forced dark theme - let users choose their preference */
 }
 
 /* Professional form styling */
@@ -200,7 +197,7 @@ tr:hover {
   }
 
   .gradient-primary {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary) 100%);
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary)) 100%);
   }
 
   .shadow-professional {

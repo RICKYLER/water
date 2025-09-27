@@ -230,10 +230,19 @@ export default function PaymentsPage() {
       setPayments(payments.map((p) => (p.id === selectedPayment.id ? { ...p, ...paymentData } : p)))
     } else {
       // Add new payment
-      const newPayment = {
+      const newPayment: Payment = {
         id: `PAY-${String(payments.length + 1).padStart(3, "0")}`,
-        ...paymentData,
+        orderId: paymentData.orderId || "",
+        customerId: paymentData.customerId || "",
+        customerName: paymentData.customerName || "",
+        amount: paymentData.amount || 0,
+        paymentMethod: paymentData.paymentMethod || "",
+        paymentType: paymentData.paymentType || "",
+        status: paymentData.status || "Pending",
+        transactionId: paymentData.transactionId || null,
         paymentDate: paymentData.status === "Completed" ? new Date().toISOString() : null,
+        dueDate: paymentData.dueDate || "",
+        notes: paymentData.notes || "",
         receivedBy: paymentData.status === "Completed" ? "Admin User" : null,
       }
       setPayments([...payments, newPayment])
@@ -243,7 +252,7 @@ export default function PaymentsPage() {
         setOutstandingOrders(
           outstandingOrders.map((order) => {
             if (order.id === selectedOrder.id) {
-              const newPaid = order.paid + paymentData.amount
+              const newPaid = order.paid + (paymentData.amount || 0)
               return {
                 ...order,
                 paid: newPaid,

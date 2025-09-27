@@ -232,9 +232,20 @@ export default function ExpensesPage() {
     if (selectedExpense) {
       setExpenses(expenses.map((e) => (e.id === selectedExpense.id ? { ...e, ...expenseData } : e)))
     } else {
-      const newExpense = {
+      const newExpense: Expense = {
         id: `EXP-${String(expenses.length + 1).padStart(3, "0")}`,
-        ...expenseData,
+        description: expenseData.description || '',
+        category: expenseData.category || '',
+        amount: expenseData.amount || 0,
+        paymentMethod: expenseData.paymentMethod || '',
+        supplierId: expenseData.supplierId || null,
+        supplierName: expenseData.supplierName || null,
+        employeeId: expenseData.employeeId || '',
+        employeeName: expenseData.employeeName || '',
+        expenseDate: expenseData.expenseDate || '',
+        status: expenseData.status || 'Pending',
+        receiptNumber: expenseData.receiptNumber || '',
+        notes: expenseData.notes || '',
         createdAt: new Date().toISOString(),
       }
       setExpenses([...expenses, newExpense])
@@ -246,9 +257,12 @@ export default function ExpensesPage() {
     if (selectedCategory) {
       setCategories(categories.map((c) => (c.id === selectedCategory.id ? { ...c, ...categoryData } : c)))
     } else {
-      const newCategory = {
+      const newCategory: Category = {
         id: Date.now().toString(),
-        ...categoryData,
+        name: categoryData.name || "",
+        description: categoryData.description || "",
+        icon: categoryData.icon || "Settings",
+        color: categoryData.color || "gray",
       }
       setCategories([...categories, newCategory])
     }

@@ -95,9 +95,14 @@ export default function CustomersPage() {
       setCustomers(customers.map((c) => (c.id === selectedCustomer.id ? { ...c, ...customerData } : c)))
     } else {
       // Add new customer
-      const newCustomer = {
+      const newCustomer: Customer = {
         id: Date.now().toString(),
-        ...customerData,
+        name: customerData.name || "",
+        email: customerData.email || "",
+        phone: customerData.phone || "",
+        address: customerData.address || "",
+        customerType: customerData.customerType || "Regular",
+        status: customerData.status || "Active",
         totalOrders: 0,
         lastOrder: null,
         joinDate: new Date().toISOString().split("T")[0],

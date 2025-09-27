@@ -242,9 +242,24 @@ export default function DeliveriesPage() {
     if (selectedDelivery) {
       setDeliveries(deliveries.map((d) => (d.id === selectedDelivery.id ? { ...d, ...deliveryData } : d)))
     } else {
-      const newDelivery = {
+      const newDelivery: Delivery = {
         id: `DEL-${String(deliveries.length + 1).padStart(3, "0")}`,
-        ...deliveryData,
+        orderId: deliveryData.orderId || '',
+        customerId: deliveryData.customerId || '',
+        customerName: deliveryData.customerName || '',
+        customerPhone: deliveryData.customerPhone || '',
+        deliveryAddress: deliveryData.deliveryAddress || '',
+        driverId: deliveryData.driverId || '',
+        driverName: deliveryData.driverName || '',
+        driverPhone: deliveryData.driverPhone || '',
+        scheduledDate: deliveryData.scheduledDate || '',
+        actualDeliveryDate: deliveryData.actualDeliveryDate || null,
+        status: deliveryData.status || 'Scheduled',
+        priority: deliveryData.priority || 'Normal',
+        deliveryFee: deliveryData.deliveryFee || 0,
+        items: deliveryData.items || [],
+        notes: deliveryData.notes || '',
+        proofOfDelivery: deliveryData.proofOfDelivery || null,
         createdAt: new Date().toISOString(),
       }
       setDeliveries([...deliveries, newDelivery])
@@ -256,9 +271,15 @@ export default function DeliveriesPage() {
     if (selectedDriver) {
       setDrivers(drivers.map((d) => (d.id === selectedDriver.id ? { ...d, ...driverData } : d)))
     } else {
-      const newDriver = {
+      const newDriver: Driver = {
         id: Date.now().toString(),
-        ...driverData,
+        name: driverData.name || "",
+        phone: driverData.phone || "",
+        email: driverData.email || "",
+        licenseNumber: driverData.licenseNumber || "",
+        vehicleType: driverData.vehicleType || "",
+        vehiclePlate: driverData.vehiclePlate || "",
+        status: driverData.status || "Active",
         currentDeliveries: 0,
       }
       setDrivers([...drivers, newDriver])

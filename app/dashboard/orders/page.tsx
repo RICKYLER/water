@@ -21,7 +21,7 @@ export default function OrdersPage() {
   const [activeTab, setActiveTab] = useState("all")
   const [isOrderDialogOpen, setIsOrderDialogOpen] = useState(false)
   const [isDetailsDialogOpen, setIsDetailsDialogOpen] = useState(false)
-  const [selectedOrder, setSelectedOrder] = useState(null)
+  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
 
   // Load orders from shared storage
   useEffect(() => {

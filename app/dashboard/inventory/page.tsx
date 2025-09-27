@@ -230,11 +230,25 @@ export default function InventoryPage() {
     if (selectedProduct) {
       setProducts(products.map((p) => (p.id === selectedProduct.id ? { ...p, ...productData } : p)))
     } else {
-      const newProduct = {
+      const newProduct: Product = {
         id: Date.now().toString(),
-        ...productData,
-        status: getStockStatus({ ...productData }),
+        name: productData.name || '',
+        category: productData.category || '',
+        sku: productData.sku || '',
+        currentStock: productData.currentStock || 0,
+        minStock: productData.minStock || 0,
+        maxStock: productData.maxStock || 0,
+        unitPrice: productData.unitPrice || 0,
+        supplierPrice: productData.supplierPrice || 0,
+        supplierId: productData.supplierId || '',
+        supplierName: productData.supplierName || '',
+        status: getStockStatus({
+          currentStock: productData.currentStock || 0,
+          minStock: productData.minStock || 0,
+          maxStock: productData.maxStock || 0
+        } as Product),
         lastRestocked: new Date().toISOString().split("T")[0],
+        location: productData.location || '',
       }
       setProducts([...products, newProduct])
     }
@@ -245,12 +259,17 @@ export default function InventoryPage() {
     if (selectedSupplier) {
       setSuppliers(suppliers.map((s) => (s.id === selectedSupplier.id ? { ...s, ...supplierData } : s)))
     } else {
-      const newSupplier = {
-        id: Date.now().toString(),
-        ...supplierData,
-        productsSupplied: 0,
-      }
-      setSuppliers([...suppliers, newSupplier])
+       const newSupplier: Supplier = {
+         id: Date.now().toString(),
+         name: supplierData.name || '',
+         contact: supplierData.contact || '',
+         phone: supplierData.phone || '',
+         email: supplierData.email || '',
+         address: supplierData.address || '',
+         status: supplierData.status || 'Active',
+         productsSupplied: 0,
+       }
+       setSuppliers([...suppliers, newSupplier])
     }
     setIsSupplierDialogOpen(false)
   }
