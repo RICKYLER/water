@@ -32,7 +32,7 @@ export function DashboardHeader() {
   }
 
   return (
-    <header className="h-16 border-b border bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/50 sticky top-0 z-50 lg:pl-72">
+    <header className="h-16 border-b border bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/50 sticky top-0 z-[100] lg:pl-72">
       <div className="flex h-16 items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-4">
           {/* Mobile menu button */}

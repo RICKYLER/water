@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Bell, User, Settings, LogOut } from "lucide-react"
+import { Bell, User, Settings, LogOut, Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import {
@@ -36,6 +36,16 @@ export function DriverHeader() {
     <header className="h-16 border-b border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 fixed top-0 left-0 right-0 z-10 lg:pl-64">
       <div className="flex h-16 items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-4">
+          {/* Mobile menu button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => window.dispatchEvent(new CustomEvent('toggle-sidebar'))}
+            className="lg:hidden"
+          >
+            <Menu className="h-5 w-5" />
+          </Button>
+
           <h1 className="text-lg font-semibold">Driver Dashboard</h1>
           <Badge variant="secondary" className="bg-green-100 text-green-800">
             On Duty

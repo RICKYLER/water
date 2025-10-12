@@ -105,9 +105,9 @@ export function AdminSidebar() {
     </div>
 
     {mobileMenuOpen && (
-      <div className="fixed inset-0 z-50 lg:hidden">
+      <div className="fixed inset-0 z-[200] lg:hidden">
         <div className="fixed inset-0 bg-black/50" onClick={() => setMobileMenuOpen(false)} />
-        <div className="fixed inset-y-0 left-0 w-72 bg-[#00B8D4] text-white overflow-y-auto shadow-xl transition-transform duration-300 ease-in-out">
+        <div className="fixed inset-y-0 left-0 w-72 bg-[#00B8D4] text-white overflow-y-auto shadow-xl transition-transform duration-300 ease-in-out z-[200]">
           <div className="flex h-16 items-center justify-between px-6 border-b border-white/10">
             <div className="flex items-center gap-2">
               <div className="rounded-full bg-white p-1 flex items-center justify-center w-12 h-12 overflow-hidden border-2 border-white">
