@@ -31,14 +31,14 @@ export default function CustomerProfile() {
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    // Check if user is logged in
-    const currentUser = localStorage.getItem('currentUser')
-    if (!currentUser) {
+    // Check if user is logged in (prefer `user`, fallback to `currentUser` for legacy)
+    const stored = localStorage.getItem('user') || localStorage.getItem('currentUser')
+    if (!stored) {
       router.push('/')
       return
     }
 
-    const userData = JSON.parse(currentUser)
+    const userData = JSON.parse(stored)
     setCustomerData(userData)
   }, [router])
 
@@ -88,8 +88,8 @@ export default function CustomerProfile() {
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 1000))
 
-      // Update localStorage
-      localStorage.setItem('currentUser', JSON.stringify(customerData))
+      // Update localStorage (standardize on `user` key)
+      localStorage.setItem('user', JSON.stringify(customerData))
 
       // Update registered users list if exists
       const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]')

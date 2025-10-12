@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200">
+  <!-- Water Droplets -->
+  <circle cx="150" cy="175" r="5" fill="#004aad"/>
+  <circle cx="165" cy="175" r="5" fill="#004aad"/>
+  <circle cx="180" cy="175" r="5" fill="#004aad"/>
+  <circle cx="195" cy="175" r="5" fill="#004aad"/>
+  <circle cx="210" cy="175" r="5" fill="#004aad"/>
+  
+  <!-- Letter A (with dripping effect) -->
+  <path d="M150 100 Q 150 50, 200 50 L 250 50 Q 275 50, 275 75 L 275 125 Q 275 150, 250 150 L 225 150 L 225 100 L 200 100 L 200 150 L 175 150 L 175 100 Z" fill="#0cc0df"/>
+  <path d="M200 150 L 200 175 Q 200 200, 175 200 L 150 200 Q 125 200, 125 175 L 125 100 Q 125 75, 150 75 L 175 75 Q 200 75, 200 100 L 200 125 L 175 125 L 175 100 L 150 100 L 150 125 L 150 150 Z" fill="#0cc0df"/>
+  
+  <!-- Dripping Effect -->
+  <path d="M150 150 Q 150 170, 140 180 Q 130 190, 150 195 Q 170 190, 160 180 Q 150 170, 150 150" fill="#0cc0df"/>
+  <path d="M160 150 Q 160 165, 155 175 Q 150 185, 160 190 Q 170 185, 165 175 Q 160 165, 160 150" fill="#0cc0df"/>
+  <path d="M170 150 Q 170 160, 165 170 Q 160 180, 170 185 Q 180 180, 175 170 Q 170 160, 170 150" fill="#0cc0df"/>
+  
+  <!-- Letter F -->
+  <path d="M275 75 L 275 200 L 250 200 L 250 150 L 225 150 L 225 125 L 250 125 L 250 100 L 225 100 L 225 75 Z" fill="#0cc0df"/>
+  
+  <!-- Wave Pattern -->
+  <path d="M250 175 Q 260 165, 270 175 Q 280 185, 290 175" stroke="#004aad" stroke-width="3" fill="none"/>
+  <path d="M240 185 Q 250 175, 260 185 Q 270 195, 280 185" stroke="#004aad" stroke-width="3" fill="none"/>
+</svg>

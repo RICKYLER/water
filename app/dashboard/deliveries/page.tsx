@@ -302,11 +302,18 @@ export default function DeliveriesPage() {
           <p className="text-muted-foreground">Track deliveries, manage drivers, and optimize routes</p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" onClick={handleAddDriver} className="gap-2 bg-transparent">
+          <Button 
+            variant="outline" 
+            onClick={handleAddDriver} 
+            className="gap-2 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-700 hover:border-gray-400 dark:hover:border-gray-500 font-medium shadow-sm"
+          >
             <User className="h-4 w-4" />
             Add Driver
           </Button>
-          <Button onClick={handleAddDelivery} className="gap-2">
+          <Button 
+            onClick={handleAddDelivery} 
+            className="gap-2 bg-blue-600 hover:bg-blue-700 text-white border-2 border-blue-600 hover:border-blue-700 font-medium shadow-sm"
+          >
             <Plus className="h-4 w-4" />
             Schedule Delivery
           </Button>
@@ -436,10 +443,20 @@ export default function DeliveriesPage() {
                         <TableCell>₱{delivery.deliveryFee.toFixed(2)}</TableCell>
                         <TableCell className="text-right">
                           <div className="flex items-center justify-end gap-2">
-                            <Button variant="ghost" size="icon" onClick={() => handleViewDelivery(delivery)}>
+                            <Button 
+                              variant="ghost" 
+                              size="icon" 
+                              onClick={() => handleViewDelivery(delivery)}
+                              className="h-8 w-8 hover:bg-blue-100 dark:hover:bg-blue-900 hover:text-blue-600 dark:hover:text-blue-400 border border-transparent hover:border-blue-300 dark:hover:border-blue-700"
+                            >
                               <Eye className="h-4 w-4" />
                             </Button>
-                            <Button variant="ghost" size="icon" onClick={() => handleEditDelivery(delivery)}>
+                            <Button 
+                              variant="ghost" 
+                              size="icon" 
+                              onClick={() => handleEditDelivery(delivery)}
+                              className="h-8 w-8 hover:bg-green-100 dark:hover:bg-green-900 hover:text-green-600 dark:hover:text-green-400 border border-transparent hover:border-green-300 dark:hover:border-green-700"
+                            >
                               <Edit className="h-4 w-4" />
                             </Button>
                           </div>
@@ -490,7 +507,12 @@ export default function DeliveriesPage() {
                         </TableCell>
                         <TableCell className="text-right">
                           <div className="flex items-center justify-end gap-2">
-                            <Button variant="ghost" size="icon" onClick={() => handleEditDriver(driver)}>
+                            <Button 
+                              variant="ghost" 
+                              size="icon" 
+                              onClick={() => handleEditDriver(driver)}
+                              className="h-8 w-8 hover:bg-green-100 dark:hover:bg-green-900 hover:text-green-600 dark:hover:text-green-400 border border-transparent hover:border-green-300 dark:hover:border-green-700"
+                            >
                               <Edit className="h-4 w-4" />
                             </Button>
                           </div>

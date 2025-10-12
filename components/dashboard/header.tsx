@@ -32,8 +32,8 @@ export function DashboardHeader() {
   }
 
   return (
-    <header className="h-16 border-b border bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/50">
-      <div className="flex h-16 items-center justify-between px-6">
+    <header className="h-16 border-b border bg-card/50 backdrop-blur supports-[backdrop-filter]:bg-card/50 sticky top-0 z-50 lg:pl-72">
+      <div className="flex h-16 items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-4">
           {/* Mobile menu button */}
           <Button
@@ -47,7 +47,7 @@ export function DashboardHeader() {
           
           {/* Mobile-friendly title with responsive text size */}
           <h1 className="text-sm sm:text-base md:text-lg font-semibold text-foreground truncate max-w-[180px] sm:max-w-none">
-            AquaFlow
+            AquaFlow Admin
           </h1>
         </div>
 

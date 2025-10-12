@@ -33,8 +33,8 @@ export function DriverHeader() {
   }
 
   return (
-    <header className="h-16 border-b border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="flex h-16 items-center justify-between px-6">
+    <header className="h-16 border-b border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 fixed top-0 left-0 right-0 z-10 lg:pl-64">
+      <div className="flex h-16 items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-4">
           <h1 className="text-lg font-semibold">Driver Dashboard</h1>
           <Badge variant="secondary" className="bg-green-100 text-green-800">

@@ -4,9 +4,9 @@ import { Users, ShoppingCart, Package, DollarSign, TrendingUp, TrendingDown, Act
 export default function DashboardPage() {
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-3xl font-bold tracking-tight text-foreground">Dashboard</h2>
-        <p className="text-muted-foreground">Welcome to your water refilling station management system</p>
+      <div className="mb-8">
+        <h1 className="text-4xl font-extrabold tracking-tight text-black dark:text-white mb-2">Dashboard</h1>
+        <p className="text-lg text-gray-700 dark:text-gray-200">Welcome to your water refilling station management system</p>
       </div>
 
       {/* Key Metrics */}

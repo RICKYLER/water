@@ -127,6 +127,8 @@ const initializeStorage = () => {
   }
 };
 
+
+
 // Order management functions
 export const getAllOrders = (): Order[] => {
   if (typeof window === 'undefined') return [];

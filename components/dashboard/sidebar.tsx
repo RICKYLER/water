@@ -55,13 +55,13 @@ export function DashboardSidebar() {
       {/* Mobile menu button - removed as we use X button to close */}
 
       {/* Desktop sidebar */}
-      <div className="fixed inset-y-0 left-0 z-40 w-72 bg-card border-r border shadow-sm lg:block hidden">
-        <div className="flex h-16 items-center px-6 border-b border">
+      <div className="fixed inset-y-0 left-0 z-40 w-72 bg-[#00B8D4] dark:bg-[#0b1726] text-white border-r border-white/10 shadow-sm lg:block hidden">
+        <div className="flex h-16 items-center px-6 border-b border-white/10">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <Droplets className="w-5 h-5 text-primary-foreground" />
+            <div className="rounded-full bg-white dark:bg-white p-1 flex items-center justify-center w-12 h-12 overflow-hidden border-2 border-white">
+              <img src="/AF.png" alt="AquaFlow Logo" className="h-9 w-auto" />
             </div>
-            <span className="text-xl font-bold text-foreground">AquaFlow</span>
+            <span className="text-xl font-bold text-white flex items-center">AquaFlow</span>
           </div>
         </div>
 
@@ -77,7 +77,7 @@ export function DashboardSidebar() {
                       "flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-colors",
                       isActive
                         ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
+                        : "text-white hover:bg-[#009BB3]",
                     )}
                   >
                     <item.icon className="h-5 w-5" />
@@ -94,19 +94,19 @@ export function DashboardSidebar() {
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div className="fixed inset-0 bg-black/50" onClick={() => setMobileMenuOpen(false)} />
-          <div className="fixed inset-y-0 left-0 w-72 bg-card overflow-y-auto shadow-xl transition-transform duration-300 ease-in-out">
-            <div className="flex h-16 items-center justify-between px-6 border-b border">
+          <div className="fixed inset-y-0 left-0 w-72 bg-[#00B8D4] dark:bg-[#0b1726] text-white overflow-y-auto shadow-xl transition-transform duration-300 ease-in-out">
+            <div className="flex h-16 items-center justify-between px-6 border-b border-white/10">
               <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <Droplets className="w-5 h-5 text-primary-foreground" />
+                <div className="rounded-full bg-white dark:bg-white p-1 flex items-center justify-center w-12 h-12 overflow-hidden border-2 border-white">
+                  <img src="/AF.png" alt="AquaFlow Logo" className="h-9 w-auto" />
                 </div>
-                <span className="text-xl font-bold text-foreground">AquaFlow</span>
+                <span className="text-xl font-bold text-white flex items-center">AquaFlow</span>
               </div>
               <Button 
                 variant="ghost" 
                 size="icon" 
                 onClick={() => setMobileMenuOpen(false)}
-                className="hover:bg-muted"
+                className="text-white hover:bg-[#009BB3]"
               >
                 <X className="h-5 w-5" />
               </Button>
@@ -125,7 +125,7 @@ export function DashboardSidebar() {
                           "flex items-center gap-3 rounded-lg px-4 py-3 text-sm font-medium transition-colors",
                           isActive
                             ? "bg-primary text-primary-foreground"
-                            : "text-muted-foreground hover:bg-accent hover:text-accent-foreground",
+                            : "text-white hover:bg-[#009BB3]",
                         )}
                       >
                         <item.icon className="h-5 w-5" />

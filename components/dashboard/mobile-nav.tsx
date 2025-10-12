@@ -12,34 +12,34 @@ export function MobileNavigation() {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-white border-t border-gray-200 md:hidden">
+    <div className="fixed bottom-0 left-0 z-50 w-full h-16 bg-[#1e40af] border-t border-blue-900 md:hidden">
       <div className="grid h-full max-w-lg grid-cols-4 mx-auto">
-        <Link href="/dashboard" className="flex flex-col items-center justify-center">
-          <div className={`flex items-center justify-center ${isActive('/dashboard') && pathname === '/dashboard' ? 'text-primary' : 'text-gray-500'}`}>
-            <Home className="w-6 h-6" />
+        <Link href="/dashboard" className="flex flex-col items-center justify-center cursor-pointer touch-manipulation active:bg-blue-800 transition-colors">
+          <div className={`flex items-center justify-center ${isActive('/dashboard') && pathname === '/dashboard' ? 'text-white' : 'text-blue-200'}`}>
+            <Home className="w-6 h-6 pointer-events-none" />
           </div>
-          <span className="text-xs mt-1">Home</span>
+          <span className="text-xs mt-1 text-white pointer-events-none">Home</span>
         </Link>
         
-        <Link href="/dashboard/orders" className="flex flex-col items-center justify-center">
-          <div className={`flex items-center justify-center ${isActive('/dashboard/orders') ? 'text-primary' : 'text-gray-500'}`}>
-            <ShoppingCart className="w-6 h-6" />
+        <Link href="/dashboard/orders" className="flex flex-col items-center justify-center cursor-pointer touch-manipulation active:bg-blue-800 transition-colors">
+          <div className={`flex items-center justify-center ${isActive('/dashboard/orders') ? 'text-white' : 'text-blue-200'}`}>
+            <ShoppingCart className="w-6 h-6 pointer-events-none" />
           </div>
-          <span className="text-xs mt-1">Orders</span>
+          <span className="text-xs mt-1 text-white pointer-events-none">Orders</span>
         </Link>
         
-        <Link href="/dashboard/customers" className="flex flex-col items-center justify-center">
-          <div className={`flex items-center justify-center ${isActive('/dashboard/customers') ? 'text-primary' : 'text-gray-500'}`}>
-            <Users className="w-6 h-6" />
+        <Link href="/dashboard/customers" className="flex flex-col items-center justify-center cursor-pointer touch-manipulation active:bg-blue-800 transition-colors">
+          <div className={`flex items-center justify-center ${isActive('/dashboard/customers') ? 'text-white' : 'text-blue-200'}`}>
+            <Users className="w-6 h-6 pointer-events-none" />
           </div>
-          <span className="text-xs mt-1">Customers</span>
+          <span className="text-xs mt-1 text-white pointer-events-none">Customers</span>
         </Link>
         
-        <Link href="/dashboard/settings" className="flex flex-col items-center justify-center">
-          <div className={`flex items-center justify-center ${isActive('/dashboard/settings') ? 'text-primary' : 'text-gray-500'}`}>
-            <Settings className="w-6 h-6" />
+        <Link href="/dashboard/settings" className="flex flex-col items-center justify-center cursor-pointer touch-manipulation active:bg-blue-800 transition-colors">
+          <div className={`flex items-center justify-center ${isActive('/dashboard/settings') ? 'text-white' : 'text-blue-200'}`}>
+            <Settings className="w-6 h-6 pointer-events-none" />
           </div>
-          <span className="text-xs mt-1">Settings</span>
+          <span className="text-xs mt-1 text-white pointer-events-none">Settings</span>
         </Link>
       </div>
     </div>

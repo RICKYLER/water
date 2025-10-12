@@ -11,12 +11,12 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
+       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-foreground mb-2">AquaFlow</h1>
           <p className="text-muted-foreground">Water Refilling Station Management System</p>
         </div>
-
+               
         <Card className="border bg-card">
           <CardHeader className="space-y-1">
             <CardTitle className="text-2xl text-center">

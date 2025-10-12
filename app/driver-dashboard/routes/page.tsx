@@ -36,18 +36,18 @@ const activeRoutes = [
 export default function RoutesPage() {
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold text-foreground">Active Routes</h1>
-        <p className="text-muted-foreground">View and manage your delivery routes</p>
+      <div className="mb-8">
+        <h1 className="text-2xl md:text-3xl font-bold text-foreground">Active Routes</h1>
+        <p className="text-muted-foreground mt-1">View and manage your delivery routes</p>
       </div>
 
       <div className="grid gap-6">
         {activeRoutes.map((route) => (
-          <Card key={route.id}>
-            <CardHeader>
+          <Card key={route.id} className="border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+            <CardHeader className="bg-gray-50 rounded-t-lg">
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle className="flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 text-primary">
                     <Route className="h-5 w-5" />
                     {route.name}
                   </CardTitle>
@@ -126,6 +126,27 @@ export default function RoutesPage() {
           </CardContent>
         </Card>
       )}
+
+      {/* Embedded Map for Panabo City, Davao Region, Philippines */}
+      <Card className="border border-gray-200 shadow-sm">
+        <CardHeader>
+          <CardTitle>Map</CardTitle>
+          <CardDescription>Panabo City, Davao Region, Philippines</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="w-full h-[420px] rounded-lg overflow-hidden border">
+            <iframe
+              title="Panabo City Map"
+              src="https://www.bing.com/maps/embed?h=420&w=1200&cp=7.338430~125.547010&lvl=11.9&typ=d&sty=r&src=SHELL&FORM=MBEDV8&q=Panabo%20City%2C%20Davao%20Region%2C%20Philippines"
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+        </CardContent>
+      </Card>
     </div>
   )
 }

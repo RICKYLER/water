@@ -4,23 +4,24 @@ import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
 import { cn } from "@/lib/utils"
 import {
-  Truck,
-  MapPin,
+  ShoppingCart,
   Clock,
-  CheckCircle,
+  User,
+  Package,
   LogOut,
   Droplets,
+  Settings,
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-const driverNavigation = [
-  { name: "My Deliveries", href: "/driver-dashboard", icon: Truck },
-  { name: "Active Routes", href: "/driver-dashboard/routes", icon: MapPin },
-  { name: "Delivery History", href: "/driver-dashboard/history", icon: Clock },
-  { name: "Completed Today", href: "/driver-dashboard/completed", icon: CheckCircle },
+const customerNavigation = [
+  { name: "Dashboard", href: "/customer-dashboard", icon: Package },
+  { name: "My Orders", href: "/customer-dashboard/orders", icon: ShoppingCart },
+  { name: "Order History", href: "/customer-dashboard/order-history", icon: Clock },
+  { name: "My Profile", href: "/customer-dashboard/profile", icon: User },
 ]
 
-export function DriverSidebar() {
+export function CustomerSidebar() {
   const pathname = usePathname()
   const router = useRouter()
 
@@ -44,12 +45,12 @@ export function DriverSidebar() {
         <nav className="mt-6 px-3 flex-1">
           <div className="mb-4 px-3">
             <p className="text-xs font-semibold text-white uppercase tracking-wider">
-              Driver Portal
+              Customer Portal
             </p>
           </div>
           <ul className="space-y-1">
-            {driverNavigation.map((item) => {
-              const isActive = pathname === item.href
+            {customerNavigation.map((item) => {
+              const isActive = pathname.startsWith(item.href)
               return (
                 <li key={item.name}>
                   <Link

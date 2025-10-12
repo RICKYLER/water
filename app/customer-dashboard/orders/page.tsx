@@ -29,13 +29,13 @@ export default function CustomerOrders() {
 
   useEffect(() => {
     // Check if user is logged in
-    const currentUser = localStorage.getItem('currentUser')
-    if (!currentUser) {
+    const stored = localStorage.getItem('user') || localStorage.getItem('currentUser')
+    if (!stored) {
       router.push('/')
       return
     }
 
-    const userData = JSON.parse(currentUser)
+    const userData = JSON.parse(stored)
     if (userData.role !== 'customer') {
       router.push('/')
       return

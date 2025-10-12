@@ -12,7 +12,7 @@ export default function DriverDashboardLayout({
       <DriverSidebar />
       <div className="lg:pl-64">
         <DriverHeader />
-        <main className="p-6">{children}</main>
+        <main className="p-6 pt-20">{children}</main>
       </div>
     </div>
   )
